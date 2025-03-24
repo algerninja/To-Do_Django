@@ -1,0 +1,96 @@
+{% extends "base.html" %} {% block content %}
+
+<div>
+  <div class="wrapper">
+    <form action="" method="post" class="wrapper">
+      {{ csrf_input }}
+
+      <input type="checkbox" id="error" />
+      <input type="checkbox" id="submitted" />
+      <div class="form form-heading">
+        <div class="heading">Creacion de la tarea</div>
+        <hr />
+        <div class="error-text">* Indica que la pregunta es obligatoria</div>
+      </div>
+      <div class="form q">
+        <div class="question">
+          <div class="title">
+            <div class="text">
+              <span>Nombre de la tarea</span><span class="required">*</span>
+            </div>
+          </div>
+
+          {% comment %} <input type="text" class="input-custom" /> {% endcomment %} 
+           
+        {{ form.title}}
+        </div>
+      </div>
+
+      <div class="form q">
+        <div class="question">
+          <div class="title">
+            <div class="text">
+              <span>Descripcion de la tarea</span><span class="required"></span>
+            </div>
+          </div>
+
+          <label for=""></label>
+
+          <div style="position: relative">
+            {{ form.description}} 
+            {% comment %}
+            <textarea
+              class="text-area-custom"
+              onkeyup="textAreaAdjust(this)"
+              rows="1"
+              cols="65"
+              wrap="hard"
+            ></textarea>
+            {% endcomment %}
+          </div>
+        </div>
+      </div>
+
+      <div class="form q">
+        <div class="question">
+          <div class="title">
+            <div class="text">
+              <span>Completada?</span><span class="required"></span>
+            </div>
+          </div>
+
+          <div class="col col-checked">
+            <!-- From Uiverse.io by vishnupprajapat -->
+            <div class="checkbox-wrapper-46">
+              {{ form.completed}} 
+              {% comment %}
+              <input type="checkbox" id="completed" class="inp-cbx" /> {% endcomment %}
+              <label for="id_completed" class="cbx"
+                ><span>
+                  <svg viewBox="0 0 12 10" height="10px" width="12px">
+                    <polyline
+                      points="1.5 6 4.5 9 10.5 1"
+                    ></polyline></svg></span
+                ><span>Completada</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button class="btn btn-primary">Enviar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %} {% block script %}
+<script>
+  function textAreaAdjust(element) {
+    console.log(element.scrollHeight);
+    element.style.height = "1px";
+    element.style.height = 0 + element.scrollHeight + "px";
+  }
+</script>
+{% endblock script %}

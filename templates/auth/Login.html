@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block content %}
+<div class="auth-style">
+  <div class="login-content">
+    <div>
+      <h1>Inicia sesion con tu cuenta To+Do</h1>
+    </div>
+
+    <form id="regForm" method="post">
+      {{ csrf_input }}
+
+      <div class="tab" style="display: block !important">
+        <div class="shift-group">
+          {{ form.email }}
+          <label for="{{ form.email.id_for_label }}" class="shift-label"
+            >Correo</label
+          >
+        </div>
+        <div class="shift-group">
+          {{ form.password }}
+
+          <label for="{{ form.password.id_for_label }}" class="shift-label"
+            >Contraseña</label
+          >
+        </div>
+      </div>
+
+      <div style="
+    display: flex;
+    justify-content: flex-end;">
+        <div style="float: right" class="btn-group">
+          <a href="{% url 'RegisterView' %}" style="width: 100px;"> Crear cuenta </a>
+          <button type="submit" class="btn-login" style="width: 100px !important;">Iniciar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

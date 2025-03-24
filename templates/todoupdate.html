@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block content %}
+
+<div>
+  {% if items|length > 0 %}
+  
+  <div>
+    <table>
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Descripcion</th>
+                <th>Completada</th>
+                <th>Fecha de Actualizacion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.title }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.completed }}</td>
+                <td>{{ item.created_at }}</td>
+                <td>
+                    <div>
+                        <a href="/todo/update/{{ item.id }}">Editar</a>
+                        <a href="/todo/delete/{{ item.id }}">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <ul>
+    </ul>
+  </div>
+  {% endif %}
+
+
+  <form method="POST">
+    {{ csrf_input }} {{ form.as_p}}
+
+    <input type="submit" value="Agregar Tarea" />
+  </form>
+</div>
+<div>hola</div>
+{% endblock %}
